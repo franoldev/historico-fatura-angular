@@ -1,0 +1,28 @@
+<div class="container text-center p-5">
+
+    <div class="spinner-border" role="status" *ngIf="estaCarregando">
+        <span class="sr-only">Loading...</span>
+    </div>
+
+    <div *ngIf="erroNoCarregamento">
+        <h2>Ops, algo deu errado!</h2>
+    </div>
+
+    <table class="table table-hover" *ngIf="!estaCarregando && !erroNoCarregamento">
+        <tr>
+            <th>ID</th>
+            <th>Valor</th>
+            <th>Origem</th>
+            <th>Categoria</th>
+            <th>Mês do Lançamento</th>
+        </tr>
+
+        <tr *ngFor="let transacao of transacoes">
+            <td> {{ transacao.id }} </td>
+            <td> {{ transacao.valor | currency:'BRL'}} </td>
+            <td> {{ transacao.origem }} </td>
+            <td> {{ transacao.categoria }} </td>
+            <td> {{ transacao.mes_lancamento }} </td>
+        </tr>
+    </table>
+</div>
